@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <link href="emeateuve.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<nav class="navbar navbar-dark bg-primary justify-content-between">
+    <a class="navbar-brand">Camela</a>
+    <form class="form-inline">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<div class="container-fluid pt-5">
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">Alquilar</a></li>
+            <li><a href="#tabs-2">Peliculas</a></li>
+            <li><a href="#tabs-3">Sobre Nosotros</a></li>
+        </ul>
+        <div id="tabs-1">
+            <div id="accordion">
+                <h3>Datos personales</h3>
+                <div>
+                    <form class="formulario">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputNombre">Nombre</label>
+                                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre"
+                                       title="Introduce aquí tu nombre completo">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputApellido">Apellidos</label>
+                                <input type="text" class="form-control" id="inputApellido" placeholder="Apellidos"
+                                       title="Donde pone apellidos va apellidos por supuesto">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Address 2</label>
+                            <input type="text" class="form-control" id="inputAddress2"
+                                   placeholder="Apartment, studio, or floor">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">City</label>
+                                <input type="text" class="form-control" id="inputCity">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">State</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputZip">Zip</label>
+                                <input type="text" class="form-control" id="inputZip">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label" for="gridCheck">
+                                    Check me out
+                                </label>
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+                <h3>Cuenta</h3>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail">Correo</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="email"
+                                   title="Aquí el e-mail de tu cuenta">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword">Password</label>
+                            <input type="text" class="form-control" id="inputPassword" placeholder="Password"
+                                   title="Aquí la contraseña de tu cuenta">
+                        </div>
+                    </div>
+                </div>
+                <h3>Fecha de Alquiler</h3>
+                <div>
+                    <label for="from">Desde</label>
+                    <input type="text" id="from" name="from" title="Fecha de adquisición de la película">
+                    <label for="to">Hasta</label>
+                    <input type="text" id="to" name="to" title="Fecha de devolución, se cobrará por el retraso">
+                </div>
+                <h3>Titulo a Alquilar</h3>
+                <div>
+                    <div class="ui-widget">
+                        <label for="peliculas">Pelicula: </label>
+                        <input id="peliculas" title="Película que quieres alquilar">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tabs-2">
+            <div class="row">
+                <h1>Aquí podrás ver las películas que tenemos</h1>
+            </div>
+            <div class="row">
+                <div class="col-8"><input id="busqueda" class="form-control mr-sm-2" type="search" placeholder="Search"
+                                          aria-label="Search"></div>
+                <div class="col-4">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="buscarpeliculas()">
+                        Buscar Películas
+                    </button>
+                </div>
+                <div class="resbusqueda" id="resbusqueda">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="tabs-3">
+            <div class="toggler">
+                <div style="display: none;" id="effect1" class="ui-widget-content ui-corner-all">
+                    <h3 class="ui-widget-header ui-corner-all">Sobre Nosotros</h3>
+                    <p>Pues somos un videoclub única y exclusivamente para la clase de DIWEB</p>
+                </div>
+            </div>
+            <div class="toggler">
+                <div style="display: none;" id="effect2" class="ui-widget-content ui-corner-all">
+                    <h3 class="ui-widget-header ui-corner-all">Dirección</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/m6_sxC7_b94?rel=0"
+                            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="toggler">
+                <div style="display: none;" id="effect3" class="ui-widget-content ui-corner-all">
+                    <h3 class="ui-widget-header ui-corner-all">Correo</h3>
+                    <p>____@gmail.com</p>
+                </div>
+            </div>
+            <button class="btn btn-outline-success" id="button1">Sobre Nosotros</button>
+            <button class="btn btn-outline-success" id="button2">Direccion</button>
+            <button class="btn btn-outline-success" id="button3">Correo</button>
+        </div>
+
+        <!--
+
+        -->
+
+    </div>
+</div>
+
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#accordion").accordion();
+    });
+    $(function () {
+        $.datepicker.setDefaults($.datepicker.regional["es"]);
+        $("#datepicker").datepicker({
+            numberOfMonths: 3,
+            showButtonPanel: true
+        });
+    });
+    $(function ($) {
+        $.datepicker.regional['es'] = {
+            closeText: "Cerrar",
+            prevText: "&#x3C;Ant",
+            nextText: "Sig&#x3E;",
+            currentText: "Hoy",
+            monthNames: ["enero", "febrero", "marzo", "abril", "mayo", "junio",
+                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+            monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun",
+                "jul", "ago", "sep", "oct", "nov", "dic"],
+            dayNames: ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"],
+            dayNamesShort: ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"],
+            dayNamesMin: ["D", "L", "M", "X", "J", "V", "S"],
+            weekHeader: "Sm",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es'])
+    })
+    $(function () {
+        var dateFormat = "mm/dd/yy",
+            from = $("#from")
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $("#to").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    });
+    $(function () {
+
+        function log(message) {
+            $("<div>").text(message).prependTo("#log");
+            $("#log").scrollTop(0);
+        }
+
+        $("#peliculas").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "http://www.omdbapi.com/?s=" + $("#peliculas").val() + "&apikey=b8187916&page=1",
+                    dataType: "json",
+                    data: {
+                        term: request.term
+                    },
+                    success: function (data) {
+
+                        var pel = cogerPeliculas(data)
+                        console.log(pel)
+                        response(pel)
+                    }
+                });
+            },
+            minLength: 2
+        });
+    });
+    $(function () {
+        $(document).tooltip();
+    });
+
+    function cogerPeliculas(data) {
+
+        var array_peliculas = []
+
+        for (let i = 0; i <= 9; i++) {
+            console.log(i)
+            array_peliculas.push(data.Search[i].Title)
+        }
+        return array_peliculas
+
+
+    }
+
+    $(function () {
+        $("#tabs").tabs();
+    });
+
+    function buscarpeliculas() {
+        limpiarPeliculas()
+        $.ajax({
+            url: "http://www.omdbapi.com/?s=" + $("#busqueda").val() + "&apikey=b8187916&page=1",
+            success: function (res) {
+                enmaquetarPeliculas(res)
+            }
+        })
+    }
+
+    function enmaquetarPeliculas(datos) {
+        for (let i = 0; i <= 9; i++) {
+            $("#resbusqueda").append('<div class="pelicula"><img src="' + datos.Search[i].Poster + '" > <p>' + datos.Search[i].Title + '</p> ')
+        }
+    }
+
+    function limpiarPeliculas() {
+        $("#resbusqueda").empty()
+    }
+
+    $(function () {
+
+        function runEffect() {
+
+            $("#effect1").toggle("fold", 500);
+        };
+
+        // Set effect from select menu value
+        $("#button1").on("click", function () {
+            runEffect();
+        });
+    });
+
+    $(function () {
+
+        function runEffect() {
+
+            $("#effect2").toggle("clip", 500);
+        };
+
+        // Set effect from select menu value
+        $("#button2").on("click", function () {
+            runEffect();
+        });
+    });
+    $(function () {
+
+        function runEffect() {
+
+            $("#effect3").toggle("highlight", 500);
+        };
+
+        // Set effect from select menu value
+        $("#button3").on("click", function () {
+            runEffect();
+        });
+    });
+
+
+</script>
+</body>
+</html>
